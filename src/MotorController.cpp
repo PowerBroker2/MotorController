@@ -30,7 +30,7 @@ void MotorController::write(const int& _speed)
 
 void MotorController::forward(const int& _speed)
 {
-	speed = _speed;
+	speed = abs(_speed);
 	digitalWrite(in1, HIGH);
 	digitalWrite(in2, LOW);
 	analogWrite(pwmPin, speed);
@@ -63,7 +63,7 @@ void MotorController::free()
 
 void MotorController::reverse(const int& _speed)
 {
-	speed = _speed;
+	speed = abs(_speed);
 	digitalWrite(in1, LOW);
 	digitalWrite(in2, HIGH);
 	analogWrite(pwmPin, speed);
