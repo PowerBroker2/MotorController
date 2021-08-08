@@ -4,10 +4,10 @@
 
 
 
-class MotorController
+class DCMotorController
 {
 public:
-	MotorController(const byte& _pwmPin, const byte& _in1, const byte& _in2);
+	DCMotorController(const byte& _pwmPin, const byte& _in1Pin, const byte& _in2Pin);
 	void write(const int& _speed);
 	void forward(const int& _speed);
 	void brake();
@@ -18,6 +18,26 @@ public:
 private:
 	int speed;
 	byte pwmPin;
-	byte in1;
-	byte in2;
+	byte in1Pin;
+	byte in2Pin;
+};
+
+
+
+
+class BLDCMotorController
+{
+public:
+	BLDCMotorController(const byte& _pwmPin, const byte& _dirPin, const byte& _sigPin);
+	void write(const int& _speed);
+	void forward(const int& _speed);
+	void reverse(const int& _speed);
+	int read();
+
+private:
+	int speed;
+	int signal;
+	byte pwmPin;
+	byte dirPin;
+	byte sigPin;
 };
